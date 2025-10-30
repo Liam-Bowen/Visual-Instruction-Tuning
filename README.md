@@ -2,4 +2,4 @@
 
 ## Visual Instruction Tuning (LLaVa)
 
- Paper: Visual Instruction Tuning
+ **Paper:** Visual Instruction Tuning
