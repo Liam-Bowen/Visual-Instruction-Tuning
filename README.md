@@ -140,8 +140,9 @@ Notation follows transformer conventions:
 
 ### ALGORITHM 1: Vision-Language Projection
 
+"""
 def project_visual_features(X_v, W):
-    """
+
     Projects visual features to language embedding space.
     
     Input: X_v ∈ ℝ^(d_v), visual features from CLIP encoder
