@@ -614,5 +614,21 @@ Training:
 """
 ```
 
+## Experimental Results
 
+### Multimodal Chatbot Performance
+
+**LLaVA-Bench (COCO):** 30 images, 90 questions (conversation, detailed description, complex reasoning)
+
+ - LLaVA: 85.1% relative to GPT-4 (text-only with ground truth captions)
+ - Shows strong alignment with GPT-4's responses despite never seeing actual GPT-4 visual outputs
+
+**LLaVA-Bench (In-the-Wild):** 24 diverse images, 60 questions (challenging generalization test)
+
+| Model |  Conversation  | Detail | Complex Reasoning | Overall |
+|:-----|:--------:|------:| ------:| ------:|
+| OpenFlamingo   | 19.3±0.5 | 19.0±0.5 | 19.1±0.7 | 19.1±0.4 |
+| BLIP-2   |  54.6±1.4  |   29.1±1.2 | 32.9±0.7 | 38.1±1.0 |
+| LLaVA   | 58.8±0.6 | 49.2±0.8 | 81.7±0.3 | 66.7±0.3 |
+ 
 
