@@ -29,14 +29,12 @@
 Creating multimodal instruction-following data is challenging for several reasons:
  
  1. **Complexity of annotation:** Unlike text-only instructions, annotators must:
-  - View and understand images
-  - Generate diverse, meaningful questions about visual content
-  - Provide detailed, accurate answers
-  - Ensure questions require actual visual understanding (not answerable from world knowledge alone)
+   - View and understand images
+   - Generate diverse, meaningful questions about visual content
+   - Provide detailed, accurate answers
+   - Ensure questions require actual visual understanding (not answerable from world knowledge alone)
 
  2. **Time and cost:** Each multimodal example requires significantly more human effort than text-only data. Annotators must carefully examine images, think of appropriate questions, and craft responses that demonstrate genuine visual reasoning.
-  - Quality control: It's harder to verify correctness—does the answer actually match what's in the image? Does the question require visual information?
-  -  Scale limitations: These factors make it expensive and slow to scale up, unlike web-scraped image-text pairs.
     
  3. **Quality control:** It's harder to verify correctness—does the answer actually match what's in the image? Does the question require visual information?
 
