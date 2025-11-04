@@ -127,7 +127,7 @@ LLaVA connects three key components:
 
 ### Two-Stage Training Process
 
-"""
+
 LLaVA: Visual Instruction Tuning Architecture
 Based on the formal algorithm style from Phuong & Hutter (2022)
 
@@ -136,9 +136,9 @@ Notation follows transformer conventions:
 - Vectors: bold lowercase (e.g., v, h)
 - Scalars: regular font (e.g., d, L)
 - Sequences: x[1:T] denotes tokens from position 1 to T
-"""
 
-# ALGORITHM 1: Vision-Language Projection
+
+### ALGORITHM 1: Vision-Language Projection
 
 def project_visual_features(X_v, W):
     """
@@ -153,7 +153,7 @@ def project_visual_features(X_v, W):
     return H_v
 
 
-# ALGORITHM 2: LLaVA Forward Pass
+### ALGORITHM 2: LLaVA Forward Pass
 
 def LLaVA_forward(X_v, X_instruct, θ):
     """
@@ -198,7 +198,7 @@ def LLaVA_forward(X_v, X_instruct, θ):
     return P
 
 
-# ALGORITHM 3: Two-Stage Training
+### ALGORITHM 3: Two-Stage Training
 
 def train_LLaVA(data_pretrain, data_instruct, θ_init):
     """
@@ -264,7 +264,7 @@ def train_LLaVA(data_pretrain, data_instruct, θ_init):
     return θ
 
 
-# ALGORITHM 4: Inference (Visual Chatbot)
+### ALGORITHM 4: Inference (Visual Chatbot)
 
 def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
     """
@@ -296,7 +296,7 @@ def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
     return detokenize(response)
 
 
-# Key Architectural Details
+### Key Architectural Details
 
 """
 Vision Encoder:
