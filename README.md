@@ -27,6 +27,7 @@
 
 <details><summary>Click to reveal answer</summary>
 Creating multimodal instruction-following data is challenging for several reasons:
+ 
  1. **Complexity of annotation:** Unlike text-only instructions, annotators must:
   - View and understand images
   - Generate diverse, meaningful questions about visual content
