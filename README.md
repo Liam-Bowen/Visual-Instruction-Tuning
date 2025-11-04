@@ -659,7 +659,7 @@ Impact of training data types (on COCO benchmark):
 
 ## Model Design Choices (ScienceQA):
 
-| Variant | Accuracy | /delta|
+| Variant | Accuracy | Δ |
 |:-----|:-----|:-----|
 |Best (before last layer, reasoning-first) | 90.92% | - |
 |Last layer features | 89.96% | -0.96% |
