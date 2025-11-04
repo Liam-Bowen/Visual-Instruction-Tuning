@@ -643,3 +643,28 @@ Training:
 | LLaVA | 90.36 | 95.95 | 88.00| 89.49 | 88.00| 90.66 | 90.93 | 90.90 | 90.92 |
 | LLaVA + GPT-4 (judge) | 91.56 | 96.74 | 91.09 | 90.62 | 88.99 | 93.52 | 92.73 | 92.16 | 92.53 |
 
+**Novel finding:** Text-only GPT-4 can improve multimodal performance by acting as a "judge" to ensemble predictions—first use of GPT-4 for model ensembling.
+
+### Ablation Studies
+
+Impact of training data types (on COCO benchmark):
+| Training Data | Conv | Detail | Complex | Overall |
+|:-----|:-----|:-----|:-----|:-----|
+| Full Data | 83.1 | 75.3 | 96.5 | 85.1 |
+| Detail + Complex | 81.5 | 73.3 | 90.8 | 81.9 (-3.2) |
+| Conv Only | 76.5 | 59.8 | 84.9 | 73.8 (-11.3) |
+| No Instruction Tuning | 22.0 | 24.0 | 18.5 | 21.5 | (-63.6) |
+
+**Takeaway:** All three data types contribute; instruction tuning is essential (>60 point improvement).
+
+## Model Design Choices (ScienceQA):
+
+| Variant | Accuracy | /delta|
+|:-----|:-----|:-----|
+|Best (before last layer, reasoning-first) | 90.92% | - |
+|Last layer features | 89.96% | -0.96% |
+| Answer-first (no CoT) | 89.77% | -1.15% |
+| No pre-training (stage 1) | 85.81% | -5.11% |
+| 7B model (vs 13B) | 89.84% | -1.08% |
+
+
