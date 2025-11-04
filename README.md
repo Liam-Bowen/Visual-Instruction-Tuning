@@ -138,9 +138,8 @@ Notation follows transformer conventions:
 - Sequences: x[1:T] denotes tokens from position 1 to T
 """
 
-# ============================================================================
 # ALGORITHM 1: Vision-Language Projection
-# ============================================================================
+
 def project_visual_features(X_v, W):
     """
     Projects visual features to language embedding space.
@@ -154,9 +153,8 @@ def project_visual_features(X_v, W):
     return H_v
 
 
-# ============================================================================
 # ALGORITHM 2: LLaVA Forward Pass
-# ============================================================================
+
 def LLaVA_forward(X_v, X_instruct, θ):
     """
     Complete forward pass through LLaVA model.
@@ -200,9 +198,8 @@ def LLaVA_forward(X_v, X_instruct, θ):
     return P
 
 
-# ============================================================================
 # ALGORITHM 3: Two-Stage Training
-# ============================================================================
+
 def train_LLaVA(data_pretrain, data_instruct, θ_init):
     """
     Two-stage training procedure for LLaVA.
@@ -267,9 +264,8 @@ def train_LLaVA(data_pretrain, data_instruct, θ_init):
     return θ
 
 
-# ============================================================================
 # ALGORITHM 4: Inference (Visual Chatbot)
-# ============================================================================
+
 def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
     """
     Generate response given image and text prompt.
@@ -300,9 +296,8 @@ def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
     return detokenize(response)
 
 
-# ============================================================================
 # Key Architectural Details
-# ============================================================================
+
 """
 Vision Encoder:
     - CLIP ViT-L/14
