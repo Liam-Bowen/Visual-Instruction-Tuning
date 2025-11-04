@@ -46,6 +46,61 @@ Creating multimodal instruction-following data is challenging for several reason
   - This scarcity motivated LLaVA's key innovation: using GPT-4 to synthetically generate instruction data from existing image-caption pairs
 </details>
 
+## Data Generation: From Image-Text Pairs to Instructions
+
+The authors' solution to data scarcity is to leverage GPT-4's reasoning capabilities while working around its inability to see images. They use symbolic representations:
+
+**Context Types Fed to GPT-4:**
+
+1. Captions: Multiple descriptions from different perspectives
+
+"A group of people standing outside of a black vehicle with various luggage."
+   "People try to fit all of their luggage in an SUV."
+   "The sport utility vehicle is parked in the public garage, being packed for a trip"
+```
+
+2. **Bounding boxes:** Object locations and labels
+```
+   person: [0.681, 0.242, 0.774, 0.694]
+   backpack: [0.384, 0.696, 0.485, 0.914]
+   suitcase: [0.758, 0.413, 0.845, 0.69]
+```
+
+### Three Types of Generated Responses:
+
+1. **Conversations (58K samples):** Multi-turn Q&A about visual content
+   - Object types, counting, actions, locations, relative positions
+   - Only questions with definite answers from the image
+
+2. **Detailed descriptions (23K samples):** Comprehensive image descriptions
+   - Rich, paragraph-length descriptions
+   - Multiple perspectives and aspects
+
+3. **Complex reasoning (77K samples):** In-depth logical reasoning
+   - Requires step-by-step reasoning
+   - Background knowledge application
+   - Cause-and-effect analysis
+
+**Total: 158K unique language-image instruction-following samples**
+
+**Key finding:** GPT-4 consistently provides higher quality data than ChatGPT, especially for spatial reasoning tasks.
+
+---
+
+## Architecture Overview
+
+### High-Level Design
+
+LLaVA connects three key components:
+```
+┌─────────────────┐      ┌──────────────┐      ┌─────────────────┐
+│  Vision Encoder │ ──▶  │  Projection  │ ──▶  │   Language LLM  │
+│   (CLIP ViT)    │      │   Matrix W   │      │    (Vicuna)     │
+└─────────────────┘      └──────────────┘      └─────────────────┘
+       Frozen             Trainable Stage 1      Trainable Stage 2
+       
+2. 
+3. 
 
 
 
