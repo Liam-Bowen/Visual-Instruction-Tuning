@@ -299,7 +299,7 @@ def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
 
 ### Key Architectural Details
 
-"""
+```
 Vision Encoder:
     - CLIP ViT-L/14
     - Uses grid features BEFORE last transformer layer (better for details)
@@ -319,7 +319,7 @@ Training:
     - Stage 1: 4 hours on 8×A100, lr=2e-3, batch=128
     - Stage 2: 10 hours on 8×A100, lr=2e-5, batch=32
     - Optimizer: AdamW with cosine learning rate schedule
-"""
+```
 
 
 
