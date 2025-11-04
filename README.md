@@ -21,4 +21,36 @@
   - State-of-the-art 92.53% accuracy on ScienceQA when combined with GPT-4.
   - Impressive zero-shot generalization on unseen images and instructions.
 
-## Question 1: Data Generation Strategy
+## Question 1: Data Scarcity Challenge
+
+**The paper identifies that "the available amount of multimodal instruction-following data is limited." Why is creating this type of data particularly challenging compared to single-modality instruction data, and how does this scarcity impact multimodal model development?**
+
+<details><summary>Click to reveal answer</summary>
+Creating multimodal instruction-following data is challenging for several reasons:
+ 1. **Complexity of annotation:** Unlike text-only instructions, annotators must:
+  - View and understand images
+  - Generate diverse, meaningful questions about visual content
+  - Provide detailed, accurate answers
+  - Ensure questions require actual visual understanding (not answerable from world knowledge alone)
+
+ 2. **Time and cost:** Each multimodal example requires significantly more human effort than text-only data. Annotators must carefully examine images, think of appropriate questions, and craft responses that demonstrate genuine visual reasoning.
+  - Quality control: It's harder to verify correctness—does the answer actually match what's in the image? Does the question require visual information?
+  -  Scale limitations: These factors make it expensive and slow to scale up, unlike web-scraped image-text pairs.
+    
+ 3. **Quality control:** It's harder to verify correctness—does the answer actually match what's in the image? Does the question require visual information?
+
+ 4. **Scale limitations:** These factors make it expensive and slow to scale up, unlike web-scraped image-text pairs.
+
+ **Impact on model development:**
+  - Models trained only on image-text pairs (like CLIP, BLIP) can describe images but struggle with instruction-following
+  - Without instruction data, models can't learn to respond appropriately to user queries ("What color is the car?" vs "Describe this image in detail")
+  - This scarcity motivated LLaVA's key innovation: using GPT-4 to synthetically generate instruction data from existing image-caption pairs
+</details>
+
+
+
+
+
+
+
+
