@@ -345,11 +345,11 @@ Training:
 
 For a sequence with T turns: (X_q^1, X_a^1, ..., X_q^T, X_a^T)
 
-<SYSTEM_MESSAGE> ###
+```<SYSTEM_MESSAGE> ###
 Human: [X_q^1, X_v] ### Assistant: X_a^1 ###
 Human: X_q^2 ### Assistant: X_a^2 ###
 ...
-
+```
 - **First turn:** Image X_v randomly placed before or after question
 - **Subsequent turns:** Text-only (image context maintained)
 - **Training:** Predict only assistant responses (green tokens), ignore human prompts
