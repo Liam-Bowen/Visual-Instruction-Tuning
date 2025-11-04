@@ -50,20 +50,21 @@ Creating multimodal instruction-following data is challenging for several reason
 
 The authors' solution to data scarcity is to leverage GPT-4's reasoning capabilities while working around its inability to see images. They use symbolic representations:
 
-**Context Types Fed to GPT-4:**
+###Context Types Fed to GPT-4:
 
-1. Captions: Multiple descriptions from different perspectives
+**1. Captions:** Multiple descriptions from different perspectives
 
+```
 "A group of people standing outside of a black vehicle with various luggage."
-   "People try to fit all of their luggage in an SUV."
-   "The sport utility vehicle is parked in the public garage, being packed for a trip"
+"People try to fit all of their luggage in an SUV."
+"The sport utility vehicle is parked in the public garage, being packed for a trip"
 ```
 
-2. **Bounding boxes:** Object locations and labels
+**2. Bounding boxes:** Object locations and labels
 ```
-   person: [0.681, 0.242, 0.774, 0.694]
-   backpack: [0.384, 0.696, 0.485, 0.914]
-   suitcase: [0.758, 0.413, 0.845, 0.69]
+person: [0.681, 0.242, 0.774, 0.694]
+backpack: [0.384, 0.696, 0.485, 0.914]
+suitcase: [0.758, 0.413, 0.845, 0.69]
 ```
 
 ### Three Types of Generated Responses:
@@ -98,6 +99,7 @@ LLaVA connects three key components:
 │   (CLIP ViT)    │      │   Matrix W   │      │    (Vicuna)     │
 └─────────────────┘      └──────────────┘      └─────────────────┘
        Frozen             Trainable Stage 1      Trainable Stage 2
+```
        
 2. 
 3. 
