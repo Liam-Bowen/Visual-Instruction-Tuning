@@ -50,7 +50,7 @@ Creating multimodal instruction-following data is challenging for several reason
 
 The authors' solution to data scarcity is to leverage GPT-4's reasoning capabilities while working around its inability to see images. They use symbolic representations:
 
-###Context Types Fed to GPT-4:
+### Context Types Fed to GPT-4:
 
 **1. Captions:** Multiple descriptions from different perspectives
 
@@ -101,8 +101,29 @@ LLaVA connects three key components:
        Frozen             Trainable Stage 1      Trainable Stage 2
 ```
        
-2. 
-3. 
+## Component Details
+
+### Vision Encoder:
+
+ - CLIP ViT-L/14 pre-trained model
+ - Extracts grid features before the last transformer layer
+ - Why before last layer? Better captures localized properties useful for understanding specific image details
+ - Output: Z_v ∈ ℝ^(d_v) where d_v = 1024
+
+### Projection Layer:
+ - Simple trainable linear transformation: H_v = W · Z_v
+ - W ∈ ℝ^(4096 × 1024)
+ - Maps visual features into language model's embedding space
+ - Authors note: "lightweight" design allows rapid iteration; more sophisticated schemes (gated cross-attention, Q-former) are future work
+
+### Language Model:
+
+ - Vicuna-13B (instruction-tuned LLaMA)
+ - Chosen for "best instruction following capabilities in language tasks among publicly available checkpoints"
+ - Standard decoder-only transformer with causal attention
+ - 32 layers, 32 attention heads, embedding dimension 4096
+
+## Training Methodology
 
 
 
