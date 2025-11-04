@@ -345,7 +345,8 @@ Training:
 
 For a sequence with T turns: (X_q^1, X_a^1, ..., X_q^T, X_a^T)
 
-```<SYSTEM_MESSAGE> ###
+```
+<SYSTEM_MESSAGE> ###
 Human: [X_q^1, X_v] ### Assistant: X_a^1 ###
 Human: X_q^2 ### Assistant: X_a^2 ###
 ...
@@ -357,7 +358,41 @@ Human: X_q^2 ### Assistant: X_a^2 ###
 
 ### Why Two Stages?
 
+Ablation results show stage 1 is crucial:
+ - Training from scratch (no pre-training): 85.81% accuracy on ScienceQA
+ - With pre-training: 90.92% accuracy
+ - 5.11% absolute improvement demonstrates importance of alignment
 
+The two-stage approach:
+ 1. Learns a "compatible visual tokenizer" for the frozen LLM
+ 2. Preserves vast pre-trained knowledge while integrating visual understanding
+ 3. Avoids catastrophic forgetting of language capabilities
+
+## Question 2: Architecture Design Choices
+
+The authors use grid features from before the last CLIP transformer layer rather than the final layer output. They also choose a simple linear projection over more complex alternatives like Flamingo's gated cross-attention or BLIP-2's Q-former. What motivates these seemingly simpler design choices?
+
+<details><summary>Click to reveal answer</summary>
+
+**Grid features before last layer:**
+
+The authors found that using features before the last CLIP layer yields better performance:
+
+ - ScienceQA accuracy: 90.92% (before last) vs 89.96% (last layer)
+ - 0.96% improvement
+
+**Reasoning:** CLIP's last layer focuses on global, abstract image properties optimized for contrastive learning (matching images to captions). The layer before captures more localized properties useful for understanding specific image details—exactly what's needed for answering detailed questions about image content.
+
+**Simple linear projection:**
+The authors explicitly chose simplicity over sophistication:
+
+ 1. Rapid iteration: "Lightweight, which allows us to iterate data centric experiments quickly"
+ 2. Data-centric focus: Wanted to validate the instruction-tuning approach without confounding variables from complex architectures
+ 3. Effectiveness: Despite simplicity, achieved 85.1% of GPT-4's performance on instruction-following
+
+Future work acknowledged: "More sophisticated schemes to connect image and language representations can also be considered, such as gated cross-attention in Flamingo and Q-former in BLIP-2. We leave exploring possibly more effective and sophisticated architecture designs for LLaVA as future work."
+This reflects a research philosophy: validate the core idea (instruction tuning for multimodal models) with the simplest architecture first, then optimize later. Indeed, LLaVA-1.5 later improved the projection design while keeping the overall approach.
+</details>
 
 
 
