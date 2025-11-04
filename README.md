@@ -321,7 +321,41 @@ Training:
     - Optimizer: AdamW with cosine learning rate schedule
 ```
 
+### Stage 1: Pre-training for Feature Alignment
 
+ - **Dataset:** 595K filtered CC3M image-caption pairs
+ - **Trainable:** Only projection matrix W
+ - **Frozen:** Vision encoder + LLM
+ - **Duration:** 1 epoch (~4 hours on 8×A100)
+ - **Objective:** Align visual features with pre-trained LLM word embeddings
+ - **Format:** Simple instruction-following (e.g., "Describe the image concisely." → caption)
+ - **Learning rate:** 2e-3, batch size: 128
+
+### Stage 2: Fine-tuning End-to-End
+
+ - **Dataset:** 158K GPT-4 generated instruction data
+ - **Trainable:** Projection matrix W + LLM parameters φ
+ - **Frozen:** Vision encoder
+ - **Duration:** 3 epochs (~10 hours on 8×A100)
+ - **Objective:** Learn instruction-following behavior with visual grounding
+ - **Format:** Multi-turn conversations + detailed descriptions + complex reasoning
+ - **Learning rate:** 2e-5, batch size: 32
+
+## Multi-Turn Conversation Format
+
+For a sequence with T turns: (X_q^1, X_a^1, ..., X_q^T, X_a^T)
+
+<SYSTEM_MESSAGE> ###
+Human: [X_q^1, X_v] ### Assistant: X_a^1 ###
+Human: X_q^2 ### Assistant: X_a^2 ###
+...
+
+- **First turn:** Image X_v randomly placed before or after question
+- **Subsequent turns:** Text-only (image context maintained)
+- **Training:** Predict only assistant responses (green tokens), ignore human prompts
+- **Loss:** Cross-entropy on answer tokens only
+
+### Why Two Stages?
 
 
 
