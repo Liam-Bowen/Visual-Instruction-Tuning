@@ -157,6 +157,7 @@ def project_visual_features(X_v, W):
 
 ### ALGORITHM 2: LLaVA Forward Pass
 
+```python
 def LLaVA_forward(X_v, X_instruct, θ):
     """
     Complete forward pass through LLaVA model.
@@ -178,18 +179,14 @@ def LLaVA_forward(X_v, X_instruct, θ):
     H_instruct = embed_tokens(X_instruct, θ.W_e, θ.W_p)
     
     # Step 3: Concatenate visual and text embeddings
-    # For first turn: randomly choose [H_v, H_instruct] or [H_instruct, H_v]
     H_input = concatenate(H_v, H_instruct)
     
     # Step 4: Process through language model (Vicuna/LLaMA)
-    # This is a standard decoder-only transformer
     X = H_input
     for l in range(1, L+1):
-        # Layer norm + masked self-attention
         X_norm = layer_norm(X, θ.γ₁ˡ, θ.β₁ˡ)
         X = X + MHAttention(X_norm, X_norm, θ.W_l, causal_mask=True)
         
-        # Layer norm + MLP
         X_norm = layer_norm(X, θ.γ₂ˡ, θ.β₂ˡ)
         X = X + MLP(X_norm, θ.W_mlp_l)
     
@@ -198,10 +195,11 @@ def LLaVA_forward(X_v, X_instruct, θ):
     P = softmax(θ.W_u @ X)
     
     return P
-
+```
 
 ### ALGORITHM 3: Two-Stage Training
 
+``` python
 def train_LLaVA(data_pretrain, data_instruct, θ_init):
     """
     Two-stage training procedure for LLaVA.
@@ -264,10 +262,11 @@ def train_LLaVA(data_pretrain, data_instruct, θ_init):
                 θ.W, θ.LLM = θ.W - η * ∇(loss), θ.LLM - η * ∇(loss)
     
     return θ
-
+```
 
 ### ALGORITHM 4: Inference (Visual Chatbot)
 
+``` python
 def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
     """
     Generate response given image and text prompt.
@@ -296,7 +295,7 @@ def LLaVA_inference(X_v, prompt, θ, max_tokens=512):
         X_instruct.append(x_next)
     
     return detokenize(response)
-
+```
 
 ### Key Architectural Details
 
