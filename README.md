@@ -802,8 +802,6 @@ def chat_with_llava(image, conversation_history):
 }
 ```
 
- 
-
 
 
 
