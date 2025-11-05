@@ -801,22 +801,6 @@ def chat_with_llava(image, conversation_history):
   url={https://arxiv.org/abs/2304.08485}
 }
 ```
-
----
-
-## Repository Structure
-```
-.
-├── README.md                          # This file
-├── pseudocode/
-│   └── llava_algorithms.py           # Formal algorithms (artifact)
-├── demo/
-│   ├── basic_inference.py            # Simple usage example
-│   ├── multi_turn_chat.py            # Conversation demo
-│   └── requirements.txt              # Python dependencies
-└── slides/
-    └── presentation.pdf               # Presentation slides (optional)
-```
  
 
 
