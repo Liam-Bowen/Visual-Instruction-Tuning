@@ -3,9 +3,13 @@
 ## Visual Instruction Tuning (LLaVa)
 
  **Paper:** Visual Instruction Tuning
+ 
  **Authors:** Haotian Liu, Chunyuan Li, Qingyang Wu, Yong Jae Lee
+ 
  **Institutions:** University of Wisconsin-Madison, Miscrosoft Research, Columbia University
+ 
  **Conference:** NeurIPS 2023
+ 
  **Paper Link:** https://arxiv.org/abs/2304.08485
 
  ## Overview
