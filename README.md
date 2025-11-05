@@ -971,6 +971,7 @@ def chat_with_llava(image, conversation_history):
 
 ## Citation
 
+``` bibtex
 @inproceedings{liu2023visual,
   title={Visual Instruction Tuning},
   author={Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae},
@@ -994,7 +995,7 @@ def chat_with_llava(image, conversation_history):
 │   └── requirements.txt              # Python dependencies
 └── slides/
     └── presentation.pdf               # Presentation slides (optional)
-
+```
  
 
 
