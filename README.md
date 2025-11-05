@@ -802,7 +802,7 @@ def chat_with_llava(image, conversation_history):
 }
 ```
 
-```bibtex
+
 @inproceedings{liu2023visual,
   title={Visual Instruction Tuning},
   author={Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae},
@@ -810,7 +810,7 @@ def chat_with_llava(image, conversation_history):
   year={2023},
   url={https://arxiv.org/abs/2304.08485}
 }
-```
+
  
 
 
