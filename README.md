@@ -53,6 +53,30 @@ Creating multimodal instruction-following data is challenging for several reason
   - This scarcity motivated LLaVA's key innovation: using GPT-4 to synthetically generate instruction data from existing image-caption pairs
 </details>
 
+## Example: Visual Reasoning Comparison
+
+One compelling example from the paper demonstrates LLaVA's capabilities compared to other models:
+
+![Extreme Ironing Example](https://www.barnorama.com/wp-content/uploads/2016/12/03-Confusing-Pictures.jpg)
+
+**User prompt:** "What is unusual about this image?"
+
+**LLaVA's response:**
+> The unusual aspect of this image is a man ironing clothes on the back of a minivan or van. This is not a typical place to perform this activity, as one would usually iron clothes in a more stationary and safe location, such as a home, using a regular ironing board. The scene depicted in the image is peculiar as it involves a makeshift ironing setup on a vehicle, which can be both unsafe and unconventional. Additionally, it is not clear how the man is able to maintain balance and stability while ironing clothes in such an unstable environment.
+
+**GPT-4's response:**
+> The unusual thing about this image is that a man is ironing clothes on an ironing board attached to the roof of a moving taxi.
+
+**BLIP-2's response:**
+> a man is sitting on the back of a yellow cab
+
+**OpenFlamingo's response:**
+> The man is drying his clothes on the hood of his car.
+
+**Key observations:** LLaVA accurately follows the user's instruction to identify what's unusual, provides comprehensive reasoning, and demonstrates detailed visual understanding. BLIP-2 and OpenFlamingo fail to address the instruction properly, while GPT-4 is more concise but LLaVA provides richer detail and reasoning.
+
+*Source: Liu et al., Visual Instruction Tuning, NeurIPS 2023*
+
 ## Data Generation: From Image-Text Pairs to Instructions
 
 The authors' solution to data scarcity is to leverage GPT-4's reasoning capabilities while working around its inability to see images. They use symbolic representations:
